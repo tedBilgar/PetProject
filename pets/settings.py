@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     'pet_app.apps.PetAppConfig',
 ]
 
+REST_FRAMEWORK = {
+    # When you enable API versioning, the request.version attribute will contain a string
+    # that corresponds to the version requested in the incoming client request.
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,6 +83,14 @@ WSGI_APPLICATION = 'pets.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pet_test',
+        'USER': 'pet_user',
+        'PASSWORD': '123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
+    'original': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
