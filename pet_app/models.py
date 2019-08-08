@@ -12,7 +12,7 @@ class Cat(models.Model):
 
 
 class Owner(models.Model):
-    cat = models.ForeignKey(Cat, related_name='onwers_of_cat', on_delete=models.CASCADE)
+    cat = models.ForeignKey(Cat, related_name='owners_of_cat', on_delete=models.CASCADE)
     name = models.CharField(max_length=50, null=True)
     money = models.IntegerField()
     occupation = models.CharField(max_length=100, null=False)
