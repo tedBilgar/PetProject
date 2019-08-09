@@ -23,3 +23,10 @@ class Owner(models.Model):
 
     def __str__(self):
         return '%d: %s' % (self.money, self.name)
+
+
+class Toy(models.Model):
+    toy_name = models.CharField(max_length=50, null=False)
+    developer = models.CharField(max_length=100, null=True)
+    cats = models.ManyToManyField(Cat)
+
