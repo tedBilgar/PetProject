@@ -23,4 +23,4 @@ class ToySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Toy
-        fields = ('toy_name', 'developer')
+        fields = ('toy_name', 'developer', 'cats')
