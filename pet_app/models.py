@@ -28,5 +28,11 @@ class Owner(models.Model):
 class Toy(models.Model):
     toy_name = models.CharField(max_length=50, null=False)
     developer = models.CharField(max_length=100, null=True)
-    cats = models.ManyToManyField(Cat)
+    cats = models.ManyToManyField(Cat, through='CatToyRelation')
+
+
+class CatToyRelation(models.Model):
+    cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
+    toy = models.ForeignKey(Toy, on_delete=models.CASCADE)
+    major = models.CharField(max_length=15)
 
