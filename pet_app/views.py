@@ -9,15 +9,15 @@ from .serializers import CatToySerializer
 
 from rest_framework import viewsets
 
-from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 
 class CatViewSet(viewsets.ModelViewSet):
 
     serializer_class = CatSerializer
     queryset = Cat.objects.all()
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name', 'home']
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'home']
 
 
 class OwnerViewSet(viewsets.ModelViewSet):
