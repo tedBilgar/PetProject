@@ -18,12 +18,14 @@ class CatViewSet(viewsets.ModelViewSet):
     queryset = Cat.objects.all()
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'home']
+    ordering = ['name', 'home']
 
 
 class OwnerViewSet(viewsets.ModelViewSet):
 
     serializer_class = OwnerSerializer
     queryset = Owner.objects.all()
+    ordering = ['name', 'money']
 
 
 class ToyViewSet(viewsets.ModelViewSet):
