@@ -10,14 +10,17 @@ from .serializers import CatToySerializer
 from rest_framework import viewsets
 
 from rest_framework import filters
+from .filters import CustomSearchFilter
+
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class CatViewSet(viewsets.ModelViewSet):
 
     serializer_class = CatSerializer
     queryset = Cat.objects.all()
-    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    search_fields = ['name', 'home']
+    filter_backends = [CustomSearchFilter, filters.OrderingFilter]
+    search_fields = ['name_only', 'home']
     ordering_fields = ['name', 'home']
 
 
