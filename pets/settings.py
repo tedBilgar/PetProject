@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'pet_app.apps.PetAppConfig',
-    'django_filters'
+    'django_filters',
+    'rest_framework_filters'
 ]
 
 REST_FRAMEWORK = {
