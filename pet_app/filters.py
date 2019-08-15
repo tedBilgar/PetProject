@@ -1,8 +1,11 @@
-import django_filters
+import rest_framework_filters as filters
 from .models import Cat
 
 
-class CatFilter(django_filters.FilterSet):
+class CatFilter(filters.FilterSet):
     class Meta:
         model = Cat
-        fields = {'name': ['contains']}
+        fields = {
+            'name': ['exact', 'contains', 'in', 'icontains'],
+            'home': ['contains']
+        }
