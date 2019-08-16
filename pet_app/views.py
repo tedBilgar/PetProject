@@ -10,6 +10,8 @@ from .serializers import OwnerSerializer
 from .serializers import ToySerializer
 from .serializers import CatToySerializer
 
+from .services import CatService
+
 from rest_framework import viewsets
 
 from rest_framework import filters
@@ -57,7 +59,8 @@ class CatToySet(viewsets.ModelViewSet):
 
 @api_view()
 def hello_world(request):
-    return Response({'message': 'Hello, World'})
+    number = CatService.get_plus(2)
+    return Response({'message': number})
 
 
 '''
