@@ -11,6 +11,8 @@ from rest_framework import viewsets
 
 from rest_framework import filters
 from .filters import CatFilter
+from .filters import OwnerFilter
+from .filters import ToyFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework_filters.backends import RestFrameworkFilterBackend
 from rest_framework.pagination import LimitOffsetPagination
@@ -30,13 +32,18 @@ class OwnerViewSet(viewsets.ModelViewSet):
 
     serializer_class = OwnerSerializer
     queryset = Owner.objects.all()
+    filter_backends = [RestFrameworkFilterBackend, filters.OrderingFilter]
     ordering = ['name', 'money']
+    filter_class = OwnerFilter
 
 
 class ToyViewSet(viewsets.ModelViewSet):
 
     serializer_class = ToySerializer
     queryset = Toy.objects.all()
+    filter_backends = [RestFrameworkFilterBackend, filters.OrderingFilter]
+    ordering = ['toy_name', 'developer']
+    filter_class = ToyFilter
 
 
 class CatToySet(viewsets.ModelViewSet):
