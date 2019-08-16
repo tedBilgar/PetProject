@@ -63,6 +63,12 @@ def hello_world(request):
     return Response(len_of_cats)
 
 
+@api_view()
+def add_suffix_for_catname(request):
+    changed_cats = CatService.change_name_by_home('Chelyabinsk')
+    return Response(changed_cats.data)
+
+
 '''
 http://127.0.0.1:8000/api/v1/cats/?name__contains=Bo&home__contains=Chelyabinsk&ordering=name
 Так например фильтруются имена по собстрингу Bo, home сабстрингу Chelyabinsk, и сортировки по имени по убыванию.

@@ -17,6 +17,7 @@ router.register(r'cat-toy', CatToySet, base_name='user')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('hello/', views.hello_world)
+    path('hello/', views.hello_world),
+    path('cat-name-test/', views.add_suffix_for_catname)
 ]
 
