@@ -36,3 +36,5 @@ class CatToyRelation(models.Model):
     toy = models.ForeignKey(Toy, on_delete=models.CASCADE)
     major = models.CharField(max_length=15)
 
+    class Meta:
+        unique_together = ('cat', 'toy')
