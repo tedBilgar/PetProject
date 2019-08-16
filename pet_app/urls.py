@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.urlpatterns import format_suffix_patterns
+from pet_app import views
 from .views import CatViewSet
 from .views import OwnerViewSet
 from .views import ToyViewSet
@@ -13,4 +15,8 @@ router.register(r'owners', OwnerViewSet, base_name='user')
 router.register(r'toys', ToyViewSet, base_name='user')
 router.register(r'cat-toy', CatToySet, base_name='user')
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+    path('hello/', views.hello_world)
+]
+

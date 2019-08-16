@@ -1,3 +1,6 @@
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .models import Cat
 from .models import Owner
 from .models import Toy
@@ -51,6 +54,10 @@ class CatToySet(viewsets.ModelViewSet):
     serializer_class = CatToySerializer
     queryset = CatToyRelation.objects.all()
 
+
+@api_view()
+def hello_world(request):
+    return Response({'message': 'Hello, World'})
 
 
 '''
