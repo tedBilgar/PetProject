@@ -59,8 +59,8 @@ class CatToySet(viewsets.ModelViewSet):
 
 @api_view()
 def hello_world(request):
-    number = CatService.get_plus(2)
-    return Response({'message': number})
+    len_of_cats = CatService.get_len_of_cats()
+    return Response(len_of_cats)
 
 
 '''
