@@ -52,6 +52,7 @@ class CatToySet(viewsets.ModelViewSet):
     queryset = CatToyRelation.objects.all()
 
 
+
 '''
 http://127.0.0.1:8000/api/v1/cats/?name__contains=Bo&home__contains=Chelyabinsk&ordering=name
 Так например фильтруются имена по собстрингу Bo, home сабстрингу Chelyabinsk, и сортировки по имени по убыванию.
@@ -75,6 +76,8 @@ name__icontains добавлена.icontains добавляется в сам ф
         }
     ]
 }
+
+Добавлена возможность фильтрации данной сущности по Многие-К-одному и Многие-Ко-Многим. Пример: http://127.0.0.1:8000/api/v1/toys/?cat__name__contains=Jo
 
 TODO посмотреть с числами (больше, меньше, равно) и датами (раньше, позднее)
 

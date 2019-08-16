@@ -31,5 +31,3 @@ class CatToySerializer(serializers.ModelSerializer):
     class Meta:
         model = CatToyRelation
         fields = ('id', 'cat', 'toy', 'major')
-
-
