@@ -70,10 +70,23 @@ def add_suffix_for_catname(request):
     return Response(changed_cats.data)
 
 
+'''
+Пример сериализации объекта в JSON(GET)
+'''
 @api_view()
 def cat_dto_count(request):
     cats = CatService.get_cat_and_count()
     return Response(cats)
+
+'''
+Пример десериализации JSON в объект
+'''
+@api_view(['POST', 'PUT'])
+def post_test_cat_parse(request):
+    if request.method == 'POST':
+        parsed_cats = CatService.post_test_parse_cats(request)
+        return Response(parsed_cats)
+
 
 '''
 http://127.0.0.1:8000/api/v1/cats/?name__contains=Bo&home__contains=Chelyabinsk&ordering=name

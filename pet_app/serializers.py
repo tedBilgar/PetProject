@@ -6,11 +6,13 @@ from pet_app.models import CatToyRelation
 
 
 class CatSerializer(serializers.ModelSerializer):
+    '''
     owners_of_cat = serializers.StringRelatedField(many=True)
+    '''
 
     class Meta:
         model = Cat
-        fields = ('id', "name", "home", 'owners_of_cat')
+        fields = ('id', "name", "home")
 
 
 class OwnerSerializer(serializers.ModelSerializer):

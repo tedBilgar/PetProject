@@ -19,6 +19,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('hello/', views.hello_world),
     path('cat-name-test/', views.add_suffix_for_catname),
-    path('cat_dto_count/', views.cat_dto_count)
+    path('cat_dto_count/', views.cat_dto_count),
+    path('post_test_cat_parse/', views.post_test_cat_parse)
 ]
 

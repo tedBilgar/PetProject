@@ -2,8 +2,9 @@ from .models import Cat
 from .serializers import CatSerializer
 from .dtos import CatDTO
 from django.core import serializers
-import simplejson as json
-
+import json
+import simplejson
+from django.db.models import Q
 
 class CatService(object):
     @staticmethod
@@ -22,6 +23,9 @@ class CatService(object):
         serializer = CatSerializer(cats, many=True)
         return serializer
 
+    '''
+    Пример сериализации объекта(списка) в JSON
+    '''
     @staticmethod
     def get_cat_and_count():
         cats = Cat.objects.all()
@@ -32,3 +36,17 @@ class CatService(object):
             count += 1
         data = json.dumps(catdto_list, namedtuple_as_object=True)
         return data
+
+    '''
+    Пример получения JSON. Десериализация в объект.
+    '''
+    @staticmethod
+    def post_test_parse_cats(request):
+        print(request.data)
+        to_json = simplejson.dumps(request.data, namedtuple_as_object=True)
+        data = json.loads(to_json)
+        cats = Cat.objects.filter(
+            Q(name=data['name']) | Q(home__startswith=data['home'])
+        )
+        serializer = CatSerializer(cats, many=True)
+        return serializer.data
