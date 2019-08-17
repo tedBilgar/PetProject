@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 from .models import Cat
 from .models import Owner
@@ -68,6 +69,11 @@ def add_suffix_for_catname(request):
     changed_cats = CatService.change_name_by_home('Chelyabinsk')
     return Response(changed_cats.data)
 
+
+@api_view()
+def cat_dto_count(request):
+    cats = CatService.get_cat_and_count()
+    return Response(cats)
 
 '''
 http://127.0.0.1:8000/api/v1/cats/?name__contains=Bo&home__contains=Chelyabinsk&ordering=name

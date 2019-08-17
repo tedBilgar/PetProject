@@ -18,6 +18,7 @@ router.register(r'cat-toy', CatToySet, base_name='user')
 urlpatterns = [
     path('', include(router.urls)),
     path('hello/', views.hello_world),
-    path('cat-name-test/', views.add_suffix_for_catname)
+    path('cat-name-test/', views.add_suffix_for_catname),
+    path('cat_dto_count/', views.cat_dto_count)
 ]
 
