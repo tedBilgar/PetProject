@@ -22,4 +22,3 @@ urlpatterns = [
     path('cat_dto_count/', views.cat_dto_count),
     path('post_test_cat_parse/', views.post_test_cat_parse)
 ]
-

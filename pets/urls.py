@@ -23,3 +23,9 @@ urlpatterns = [
     re_path(r'^api/v1/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     re_path(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh')
 ]
+
+
+'''
+С помошью JWT мы можем получить токен в данной сессии данного пользователя по username и password в POST
+запросе по api/v1/token/
+'''
