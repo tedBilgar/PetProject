@@ -6,6 +6,7 @@ import json
 import simplejson
 from django.db.models import Q
 
+
 class CatService(object):
     @staticmethod
     def get_len_of_cats():
