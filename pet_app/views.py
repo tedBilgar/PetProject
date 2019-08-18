@@ -23,6 +23,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework_filters.backends import RestFrameworkFilterBackend
 from rest_framework.pagination import LimitOffsetPagination
 
+from rest_framework.permissions import AllowAny
+
 
 class CatViewSet(viewsets.ModelViewSet):
 
@@ -50,6 +52,11 @@ class ToyViewSet(viewsets.ModelViewSet):
     filter_backends = [RestFrameworkFilterBackend, filters.OrderingFilter]
     ordering = ['toy_name', 'developer']
     filter_class = ToyFilter
+    permission_classes = [AllowAny]
+    '''
+    permission_classes = [AllowAny] Так как в настройках указано, что все запросы по умолчанию для isAuth
+    то для некоторых мы можем вручную поставить, чтобы выполнялись без аутентификации
+    '''
 
 
 class CatToySet(viewsets.ModelViewSet):
