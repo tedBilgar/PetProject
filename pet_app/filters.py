@@ -1,7 +1,16 @@
 import rest_framework_filters as filters
+from django.contrib.auth.models import User
 from .models import Cat
 from .models import Owner
 from .models import Toy
+
+
+class UserFilter(filters.FilterSet):
+    class Meta:
+        model = User
+        fields = {
+            'username': ['exact', 'contains', 'icontains']
+        }
 
 
 class CatFilter(filters.FilterSet):

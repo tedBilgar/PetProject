@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 from pet_app import views
 from .views import CatViewSet
+from .views import UserViewSet
 from .views import OwnerViewSet
 from .views import ToyViewSet
 from .views import CatToySet
@@ -11,6 +12,7 @@ app_name = "cats"
 
 router = DefaultRouter()
 router.register(r'cats', CatViewSet, base_name='user')
+router.register(r'users', UserViewSet, base_name='user')
 router.register(r'owners', OwnerViewSet, base_name='user')
 router.register(r'toys', ToyViewSet, base_name='user')
 router.register(r'cat-toy', CatToySet, base_name='user')

@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 
 from .models import Cat
 from .models import Owner
@@ -10,6 +11,7 @@ from .serializers import CatSerializer
 from .serializers import OwnerSerializer
 from .serializers import ToySerializer
 from .serializers import CatToySerializer
+from .serializers import UserSerializer
 
 from .services import CatService
 
@@ -17,6 +19,7 @@ from rest_framework import viewsets
 
 from rest_framework import filters
 from .filters import CatFilter
+from .filters import UserFilter
 from .filters import OwnerFilter
 from .filters import ToyFilter
 from django_filters.rest_framework import DjangoFilterBackend
@@ -24,6 +27,16 @@ from rest_framework_filters.backends import RestFrameworkFilterBackend
 from rest_framework.pagination import LimitOffsetPagination
 
 from rest_framework.permissions import AllowAny
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+    filter_backends = [RestFrameworkFilterBackend, filters.OrderingFilter]
+    ordering_fields = ['username']
+    filter_class = UserFilter
+    pagination_class = LimitOffsetPagination
+    permission_classes = [AllowAny]
 
 
 class CatViewSet(viewsets.ModelViewSet):

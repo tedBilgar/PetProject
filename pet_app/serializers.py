@@ -3,6 +3,7 @@ from pet_app.models import Cat
 from pet_app.models import Owner
 from pet_app.models import Toy
 from pet_app.models import CatToyRelation
+from django.contrib.auth.models import User
 
 
 class CatSerializer(serializers.ModelSerializer):
@@ -33,3 +34,10 @@ class CatToySerializer(serializers.ModelSerializer):
     class Meta:
         model = CatToyRelation
         fields = ('id', 'cat', 'toy', 'major')
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'username']
